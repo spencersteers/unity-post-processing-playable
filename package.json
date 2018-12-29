@@ -1,0 +1,10 @@
+{
+    "name": "com.spencersteers.unity-post-processing-playable",
+    "version": "1.0.0",
+    "displayName": "Post Processing Playable",
+    "unity": "2018.3",
+    "description": "Control Unity Post-Process Effects with Timeline",
+    "dependencies": {
+        "com.unity.postprocessing": "2.1.2"
+    }
+}

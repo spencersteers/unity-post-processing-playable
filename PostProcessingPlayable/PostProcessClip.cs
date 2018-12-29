@@ -37,7 +37,7 @@ namespace PostProcessingPlayable
                 volume.isGlobal = true;
                 volume.profile = postProcessProfile;
                 volume.gameObject.hideFlags = HideFlags.DontSave | HideFlags.NotEditable;
-                volume.gameObject.name = $"PostProcessClip.CreatePlayable: QuickVolume [Profile {postProcessProfile.name}]";
+                volume.gameObject.name = "PostProcessClip.CreatePlayable: QuickVolume [Profile " + postProcessProfile.name + "]";
                 
                 clone.postProcessVolume = volume;
             }
