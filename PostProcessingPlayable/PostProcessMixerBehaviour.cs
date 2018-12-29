@@ -9,6 +9,8 @@ namespace SpencerSteers.PostProcessingPlayable
 {
     public class PostProcessMixerBehaviour : PlayableBehaviour
     {
+        public Dictionary<int, PostProcessVolume> profileVolumes;
+
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
             int inputCount = playable.GetInputCount();
@@ -16,10 +18,26 @@ namespace SpencerSteers.PostProcessingPlayable
             {
                 ScriptPlayable<PostProcessBehaviour> playableInput = (ScriptPlayable<PostProcessBehaviour>)playable.GetInput(i);
                 PostProcessBehaviour input = playableInput.GetBehaviour();
-                
+
+                if (input.postProcessProfile == null)
+                    continue;
+
+                float normalizedTime = (float)(playableInput.GetTime() / input.timelineClipDuration);
+                float weightCurve = Mathf.Clamp01(input.weightCurve.Evaluate(normalizedTime));
                 float inputWeight = playable.GetInputWeight(i);
-                input.postProcessVolume.weight = inputWeight;
-           }
+                input.postProcessVolume.weight = inputWeight * weightCurve;
+
+                if (inputWeight > 0 && input.isDebug)
+                {
+                    DebugUtils.GroupLog(
+                        "PostProcessMixerBehaviour",
+                        "input.timelineClipDuration", input.timelineClipDuration,
+                        nameof(normalizedTime), normalizedTime,
+                        nameof(weightCurve), weightCurve,
+                        nameof(inputWeight), inputWeight
+                    );
+                }
+            }
         }
     }
 }
