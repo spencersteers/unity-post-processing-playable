@@ -1,5 +1,5 @@
 {
-    "name": "PostProcessPlayable",
+    "name": "SpencerSteers.PostProcessPlayable",
     "references": [
         "Unity.Postprocessing.Runtime"
     ],

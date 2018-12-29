@@ -4,7 +4,7 @@ using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using UnityEngine.Rendering.PostProcessing;
 
-namespace PostProcessingPlayable
+namespace SpencerSteers.PostProcessingPlayable
 {
     [Serializable]
     public class PostProcessBehaviour : PlayableBehaviour

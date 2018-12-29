@@ -4,7 +4,7 @@ using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using UnityEngine.Rendering.PostProcessing;
 
-namespace PostProcessingPlayable
+namespace SpencerSteers.PostProcessingPlayable
 {
     [TrackColor(0.98f, 0.27f, 0.42f)]
     [TrackClipType(typeof(PostProcessClip))]
